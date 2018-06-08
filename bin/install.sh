@@ -22,10 +22,10 @@ else
     exit 1
 fi
 
-if [[ "x$YINT_VERSION" == "x" ]]; then
+if [[ "x$TERRAFORM_RESTRICTOR_VERSION" == "x" ]]; then
     VERSION=$(curl -s https://api.github.com/repos/${OWNER}/${REPO_NAME}/releases/latest | grep tag_name | head -n 1 | cut -d '"' -f 4)
 else
-    VERSION=$YINT_VERSION
+    VERSION=$TERRAFORM_RESTRICTOR_VERSION
 fi
 ARCHNUM=`getconf LONG_BIT`
 ARCH=""

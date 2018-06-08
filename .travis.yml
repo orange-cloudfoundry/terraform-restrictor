@@ -2,8 +2,14 @@ language: go
 go:
 - '1.10'
 install:
+- go get github.com/hashicorp/terraform
 - go get github.com/onsi/ginkgo/ginkgo
 - go get github.com/onsi/gomega
+before_script:
+- "testfolder=$(pwd)"
+- "cd $GOPATH/src/github.com/hashicorp/terraform"
+- "git checkout v0.11.7"
+- 'cd "$testfolder"'
 script: go test -v ./... -args -ginkgo.randomizeAllSpecs -ginkgo.trace
 after_success:
 - bin/build_all

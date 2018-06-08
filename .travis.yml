@@ -1,13 +1,23 @@
 language: go
 go:
-- "1.10"
-
+- '1.10'
 install:
 - go get github.com/onsi/ginkgo/ginkgo
 - go get github.com/onsi/gomega
-
 script: go test -v ./... -args -ginkgo.randomizeAllSpecs -ginkgo.trace
-
 after_success:
 - bin/build_all
-
+deploy:
+  provider: releases
+  api_key:
+    secure: JDGE0DOKXrhIivGUxOQvTXSH0SAG4YI2NuvWdixJ8dfUviSnAaFfyWHv77iL8Kvj+9RbI4499zAK9TJXAAcz65zRPqcNcvAEFMOcR12oLLyoq/AtkCMSsYXKFRrAsEOiOxpehilyyAHhZkVIvvkS4m3Z0W2uwO32yTtLLd/FHcOV/WFLP295EXrZ+6NaP2095KIZHGM5AZ722ntXggC1TaNLZYVLfl1A4lnfpwTzhwBbkBM5hn18Ge4XXgd1nyBYnOAA1uNwrGBJ9NnXvXRR0PMILKn9zuTXI2SR4Wr8/1XAkKo/SVo835aC58QYwxtXPg258Xubd/wCNtXgWHpBPftZHYmdIUoNJVeROoGuUl6RGJgIKjKzUYdVRhhiwjK0SFCJXmrv9m0oxwej+u1BP1pakVtVgLO2jDOmcvCDFidIIhCCy3PePNZeIQGz6rHpz5/fuyFELFduA/lwubEi+PDzTkZF88F5bP84hc3OnMbrNYrBracoq3q2qp+UaRe0MjhfpqnO7e6gjkIM+/R+fVPcNuEGtOo88MyDMPLJcy76XI9C05w74sPczZTaCzphutR0aDcnqUhRv+8UAflvxaLIN9DUY9t1BOKXEx3XqHmf/tvhPLvPo+ay0SFYxI5qL2CP+7sxLUABOm8EfZU676yavRxVD+nR4FF3/nZX/0Q=
+  file:
+  - out/terraform-restrictor_darwin_amd64
+  - out/terraform-restrictor_linux_386
+  - out/terraform-restrictor_linux_amd64
+  - out/terraform-restrictor_windows_386.exe
+  - out/terraform-restrictor_windows_amd64.exe
+  skip_cleanup: true
+  on:
+    tags: true
+  all_branches: true

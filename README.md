@@ -1,4 +1,4 @@
-# Terraform-restrictor
+# Terraform-restrictor [![Build Status](https://travis-ci.org/orange-cloudfoundry/terraform-restrictor.svg?branch=master)](https://travis-ci.org/orange-cloudfoundry/terraform-restrictor)
 
 A small binary which read a [terraform plan file](https://www.terraform.io/docs/commands/plan.html#out-path) 
 to perform some check. This was primarily made for continuous integration.
